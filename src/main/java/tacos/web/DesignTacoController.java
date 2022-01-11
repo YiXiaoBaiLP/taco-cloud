@@ -18,6 +18,7 @@ import tacos.Taco;
 @Controller // @Controller：控制器，Spring应用上下文的bean
 @RequestMapping("/design")// @RequestMapping：注解用到类级别的时候，它能够指定控制器所处理的请求类型
 public class DesignTacoController {
+	
 	/*
 	 * @RequestMapping		通用的请求处理
 	 * @GetMapping			处理HTTP GET求情
@@ -26,10 +27,10 @@ public class DesignTacoController {
 	 * @DeleteMapping		处理HTTP DELETE请求
 	 * @PathMapping			处理HTTP PATCH请求
 	 */
-	
 	@GetMapping
 	// @GetMapping：结合类级别的@RequestMapping来使用，指明当接收到对“/design”的Http请求时，会调用此方法（此注解在Spring 4.3中引入）
 	public String showDesignForm(Model model) {
+		// 创建Taco的配料表
 		List<Ingredient> ingredients = Arrays.asList(
 				new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
 				new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
@@ -51,6 +52,7 @@ public class DesignTacoController {
 		}
 		
 		model.addAttribute("design", new Taco());
+		// 返回视图的逻辑名称
 		return "design";
 	}
 	
