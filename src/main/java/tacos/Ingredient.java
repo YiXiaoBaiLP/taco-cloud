@@ -29,7 +29,6 @@ public class Ingredient {
 	 * CHEESE：奶酪
 	 * SAUCE：酱汁
 	 * @author yixiaobai
-	 *
 	 */
 	public static enum Type{
 		/** 包装 */

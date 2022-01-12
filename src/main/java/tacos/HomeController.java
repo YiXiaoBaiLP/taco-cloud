@@ -13,9 +13,4 @@ public class HomeController {
 		// 返回视图名称
 		return "home";
 	}
-	
-	@GetMapping("/index")
-	public String index() {
-		return "index";
-	}
 }

@@ -6,8 +6,7 @@
         <title>Taco Cloud</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        <link rel="stylesheet" th:href="@{/style.css}">
+        <link rel="stylesheet" th:href="@{/styles.css}">
     </head>
     <body>
         <h1>Design your taco!</h1>
@@ -45,8 +44,7 @@
             </div>
             <div>
                 <h3>Name your taco creation:</h3>
-
-                <!--<input type="text" th:field="*{name}" />-->
+                <input type="text" th:field="*{name}"/>
                 <br/>
                 <button>Submit your taco</button>
             </div>
