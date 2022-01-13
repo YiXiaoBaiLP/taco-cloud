@@ -22,7 +22,9 @@ public class OrderController {
 	
 	@PostMapping
 	public String proessOrder(Order order) {
+		// 此log对象由@Slf4j注解提供
 		log.info("Order submitted:" + order);
+		// redirect：表示重定向
 		return "redirect:/";
 	}
 }

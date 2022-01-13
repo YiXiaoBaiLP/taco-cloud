@@ -61,7 +61,9 @@ public class DesignTacoController {
 	public String processDesign(Taco design) {
 		// Save the taco design...
 		// We'll do this in chapter 3
+		// 此log对象由@Slf4j注解提供
 		log.info("Processing design: " + design);
+		// redirect：表示重定向
 		return "redirect:/orders/current";
 	}
 	
