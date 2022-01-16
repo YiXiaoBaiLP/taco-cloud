@@ -1,7 +1,10 @@
 package tacos.web;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,10 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public String proessOrder(Order order) {
+	public String proessOrder(@Valid Order order, Errors errors) {
+		if(errors.hasErrors()) {
+			return "orderForm";
+		}
 		// 此log对象由@Slf4j注解提供
 		log.info("Order submitted:" + order);
 		// redirect：表示重定向
