@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 // 此注解会将此类注册到Spring MVC中，这样就可以发送请求了，提供环境支持
-@WebMvcTest(HomeController.class)
+//@WebMvcTest(HomeController.class)
 public class HomeControllerTest {
 	
 	// 注入MockMvc
