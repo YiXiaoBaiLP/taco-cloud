@@ -13,9 +13,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import tacos.web.WebConfig;
+
 @RunWith(SpringRunner.class)
 // 此注解会将此类注册到Spring MVC中，这样就可以发送请求了，提供环境支持
 //@WebMvcTest(HomeController.class)
+@WebMvcTest(WebConfig.class)
 public class HomeControllerTest {
 	
 	// 注入MockMvc
