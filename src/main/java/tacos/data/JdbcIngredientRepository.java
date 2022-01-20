@@ -42,16 +42,23 @@ public class JdbcIngredientRepository implements IngredientRepository{
 					@Override
 					public Ingredient mapRow(ResultSet rs, int rowNum) throws SQLException {
 						return new Ingredient(
-								rs.getString(""),
+								rs.getString("id"),
 								rs.getString("name"),
 								Ingredient.Type.valueOf(rs.getString("type")));
 					}
 			}, id);
 	}
 
+	/**
+	 * 保存数据
+	 */
 	@Override
 	public Ingredient save(Ingredient ingredient) {
-		return null;
+		jdbc.update("insert into Ingredient (id, name, type) values (?, ?, ?)", 
+				ingredient.getId(), 
+				ingredient.getName(),
+				ingredient.getType());
+		return ingredient;
 	}
 
 	private Ingredient mapRowToIngredient(ResultSet rs, int rowNum) throws SQLException{
