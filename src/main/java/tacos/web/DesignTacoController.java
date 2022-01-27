@@ -1,7 +1,6 @@
 package tacos.web;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +29,7 @@ public class DesignTacoController {
 	
 	private IngredientRepository ingredientRepo;
 	
+	//自动注入的构造函数中
 	@Autowired
 	public DesignTacoController(IngredientRepository ingredientRepo) {
 		this.ingredientRepo = ingredientRepo;
