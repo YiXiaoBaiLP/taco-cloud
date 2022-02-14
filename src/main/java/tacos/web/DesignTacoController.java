@@ -20,6 +20,7 @@ import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Taco;
 import tacos.data.IngredientRepository;
+import tacos.data.TacoRepository;
 
 @Slf4j // @Slf4j：是一个Lombok所提供的注解，在运行时，他会在这个类中自动生成一个SLF4J(Simple Logging Facade for Java) logger
 @Controller // @Controller：控制器，Spring应用上下文的bean
@@ -29,10 +30,14 @@ public class DesignTacoController {
 	
 	private IngredientRepository ingredientRepo;
 	
+	private TacoRepository designRepo;
+	
 	//自动注入的构造函数中
 	@Autowired
-	public DesignTacoController(IngredientRepository ingredientRepo) {
+	public DesignTacoController(IngredientRepository ingredientRepo,
+			TacoRepository designRepo) {
 		this.ingredientRepo = ingredientRepo;
+		this.designRepo = designRepo;
 	}
 	
 	/*
