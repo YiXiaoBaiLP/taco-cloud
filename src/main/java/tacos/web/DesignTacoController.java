@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import lombok.extern.slf4j.Slf4j;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
+import tacos.Order;
 import tacos.Taco;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
@@ -29,7 +31,8 @@ import tacos.data.TacoRepository;
 public class DesignTacoController {
 	
 	private IngredientRepository ingredientRepo;
-	
+	/** 注入并使用TacoRepository*/
+	// 可以在showDesignForm()、processDesign()方法中使用了
 	private TacoRepository designRepo;
 	
 	//自动注入的构造函数中
@@ -79,14 +82,37 @@ public class DesignTacoController {
 		// 返回视图的逻辑名称
 		return "design";
 	}
+	/*
+	 * @ModelAttribute：会在控制器请求方法执行前执行，这里每次请求“/design"时都会构建一个
+	 * order和taco属性，其值分别为空对象。
+	 * 其中order（@SessionAttributes("order")）属性会提升到session域中
+	 */
+	@ModelAttribute(name = "order")
+	public Order order() {
+		return new Order();
+	}
 	
+	@ModelAttribute(name = "taco")
+	public Taco taco() {
+		return new Taco();
+	}
+	/**
+	 * 保存taco设计并将他们链接至订单页面
+	 * @param design
+	 * @param errors
+	 * @return
+	 */
 	@PostMapping
 	// @Valid:此注解会告诉Spring MVC要对提交的Taco对象进行校验，会将错误捕捉到并封装到Errors对象中
-	public String processDesign(@Valid Taco design, Errors errors) {
+	public String processDesign(@Valid Taco design, Errors errors
+			, @ModelAttribute Order order) {
 		// Errors.hasErrors() 判断是否有错误信息
 		if(errors.hasErrors()) {
 			return "design";
 		}
+		
+		Taco saved = designRepo.save(design);
+//		order.addDesign(saved);
 		// Save the taco design...
 		// We'll do this in chapter 3
 		// 此log对象由@Slf4j注解提供
