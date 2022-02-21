@@ -53,7 +53,8 @@ public class DesignTacoController {
 	 */
 	@GetMapping
 	// @GetMapping：结合类级别的@RequestMapping来使用，指明当接收到对“/design”的Http请求时，会调用此方法（此注解在Spring 4.3中引入）
-	public String showDesignForm(Model model) {
+	public String showDesignForm(Model model/* Model参数：负责控制器和展现数据的视图之间传递数据*/) {
+											/* 放到Model属性中的数据将会复制到Servlet Response的属性中*/
 		// 创建Taco的配料表
 //		List<Ingredient> ingredients = Arrays.asList(
 //				new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
@@ -77,7 +78,7 @@ public class DesignTacoController {
 			model.addAttribute(type.toString().toLowerCase(), 
 					filterByType(ingredients, type));
 		}
-		
+		// 将Taco对象存放到design属性中
 		model.addAttribute("design", new Taco());
 		// 返回视图的逻辑名称
 		return "design";

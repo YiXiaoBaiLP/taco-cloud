@@ -13,7 +13,7 @@
         <img th:src="@{/images/TacoCloud.png}"/>
         <form method="POST" th:object="${design}">
             <div class="grid">
-                <di class="ingredient-group" id="wraps">
+                <div class="ingredient-group" id="wraps">
                     <h3>Designate your wrap: </h3>
                     <div th:each="ingredient : ${wrap}">
                         <input type="checkbox" name="ingredients" th:value="${ingredient.id}" />

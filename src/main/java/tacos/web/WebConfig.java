@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author yixiaobai
  * @Version 1.0.0
  */
-@Configuration
+@Configuration// 此注解会告诉Spring这是一个配置类，会为Spring应用上下文提供bean。
 public class WebConfig implements WebMvcConfigurer{
 	
 	/**
