@@ -105,8 +105,8 @@ public class DesignTacoController {
 	 */
 	@PostMapping
 	// @Valid:此注解会告诉Spring MVC要对提交的Taco对象进行校验，会将错误捕捉到并封装到Errors对象中
-	public String processDesign(@Valid Taco design, Errors errors
-			, @ModelAttribute Order order) {
+	public String processDesign(@Valid Taco design, Errors errors,
+			@ModelAttribute Order order) {
 		// Errors.hasErrors() 判断是否有错误信息
 		if(errors.hasErrors()) {
 			return "design";

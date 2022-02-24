@@ -5,10 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-// @RunnWith：使用Spring的运行器
+/**
+ * SpringBoot测试类
+ * @author yixiaobai
+ *
+ */
+//SpringRunner类（子类）是SpringJUnit4ClassRunner的别名（父类）
 @RunWith(SpringRunner.class)
-// @Spring Boot测试注解
-@SpringBootTest
+@SpringBootTest// 启动Junit测试的时候要添加上SpringBoot的功能
 class TacoCloudApplicationTests {
 
 	/**
