@@ -30,7 +30,7 @@ import tacos.data.TacoRepository;
 @SessionAttributes("order")// @SessionAttributes: 可以使对象跨页面使用，也就是将对象保存到session中去
 public class DesignTacoController {
 	
-	private IngredientRepository ingredientRepo;
+	private final IngredientRepository ingredientRepo;
 	/** 注入并使用TacoRepository*/
 	// 可以在showDesignForm()、processDesign()方法中使用了
 	private TacoRepository designRepo;
@@ -113,7 +113,7 @@ public class DesignTacoController {
 		}
 		
 		Taco saved = designRepo.save(design);
-//		order.addDesign(saved);
+		order.addDesign(saved);
 		// Save the taco design...
 		// We'll do this in chapter 3
 		// 此log对象由@Slf4j注解提供

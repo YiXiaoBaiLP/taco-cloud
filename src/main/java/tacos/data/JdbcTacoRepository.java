@@ -65,7 +65,7 @@ public class JdbcTacoRepository implements TacoRepository{
 				Types.VARCHAR,
 				Types.TIMESTAMP);
 		// 设置自动返回主键，否则会导致getKey().longValue()空指针异常
-		preFactory.setUpdatableResults(true);
+		preFactory.setReturnGeneratedKeys(true);
 		// 将查询参数所需要的值传递进来
 		PreparedStatementCreator psc = preFactory.newPreparedStatementCreator(
 				Arrays.asList(

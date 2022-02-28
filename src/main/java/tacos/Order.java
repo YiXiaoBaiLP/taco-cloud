@@ -2,6 +2,7 @@ package tacos;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -36,4 +37,10 @@ public class Order {
 	// @Digits:校验字段的值是否为数字，以及数字长度、数字的小数位数
 	@Digits(integer = 3, fraction = 0, message = "Invalid CVV")
 	private String ccCVV;
+	
+	private List<Taco> tacos;
+	
+	public void addDesign(Taco design) {
+		this.tacos.add(design);
+	}
 }
